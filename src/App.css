@@ -1,0 +1,99 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.todoForm {
+  margin: 10px 0px;
+  text-align: "center";
+}
+
+.todoForm input{
+  padding: 10px;
+  width: 230px;
+  margin-right: 15px;
+}
+
+.todoForm select {
+  padding: 10px;
+  margin-right: 15px;
+}
+
+button {
+  padding: 10px 10px;
+  background-color: grey;
+}
+
+.todo {
+  display: flex;
+  margin: 5px 0;
+  border: 1px solid;
+  padding: 10px;
+  align-items: center;
+}
+
+.todo input[type=checkbox]{
+  margin-right: 10px
+}
+
+
+.todo span{
+  display: inline-block;
+}
+
+.todoList {
+  margin-top: 30px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+.active {
+  background-color: yellow
+}
+
+.deleteIcon {
+  margin-left: auto;
+  padding: 0;
+  background: none;
+  border: 0;
+}
