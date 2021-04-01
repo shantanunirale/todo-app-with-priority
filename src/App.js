@@ -3,25 +3,32 @@ import React, { useState } from 'react';
 import TodoForm from './TodoForm'
 import TodoList from './TodoList'
 
-// {
-//   label: "Shantanu fgdshjfg fhskdhfgsjd fgsdhjfg sdf ghjsgd fgsdf",
-//   priority: 1,
-//   check: false,
-//   id: Date.now(),
-//   isEdit: false
-// }
+
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState([{
+    label: "Shantanu1",
+    check: false,
+    id: 1,
+    isEdit: false
+  },
+  {
+    label: "Shantanu2",
+    check: false,
+    id: 2,
+    isEdit: false
+  },
+  {
+    label: "Shantanu3",
+    check: false,
+    id: 3,
+    isEdit: false
+  }]);
 
   const saveTodo = (newTodo) => {
     if (newTodo.id) {
-      let reSort = false;
       const newList = todos.map(todo => {
         if (todo.id === newTodo.id) {
-          if (newTodo.priority !== todo.priority) {
-            reSort = true;
-          }
           return {
             ...todo,
             ...newTodo,
@@ -30,17 +37,6 @@ function App() {
         }
         return todo;
       });
-      if (reSort) {
-        newList.sort((a, b) => {
-          if (a.priority < b.priority) {
-            return -1;
-          }
-          if (a.priority > b.priority) {
-            return 1;
-          }
-          return 0;
-        })
-      }
       setTodos(newList);
     } else {
       const todo = {
@@ -50,17 +46,12 @@ function App() {
         isEdit: false
       }
       const newList = [...todos, todo]
-      newList.sort((a, b) => {
-        if (a.priority < b.priority) {
-          return -1;
-        }
-        if (a.priority > b.priority) {
-          return 1;
-        }
-        return 0;
-      })
       setTodos(newList);
     }
+  }
+
+  const onReorder = (todos) => {
+    setTodos(todos)
   }
 
   const deleteSelected = () => {
@@ -99,7 +90,7 @@ function App() {
           <button onClick={deleteSelected} >Delete Selected</button>
           <TodoForm saveTodo={saveTodo} />
         </div>
-        <TodoList todos={todos} onDelete={deleteTodo} onSelect={selectTodo} onEdit={editTodo} saveTodo={saveTodo} />
+        <TodoList onReorder={onReorder} todos={todos} onDelete={deleteTodo} onSelect={selectTodo} onEdit={editTodo} saveTodo={saveTodo} />
       </div>
     </div>
   );
